@@ -21,9 +21,9 @@ run: $(EXEC)
 
 install: $(EXEC)
 	mkdir -p ~/$(EXEC)
-	install -D $(EXEC) ~/$(EXEC)/
+	install -D $(EXEC) ~/.$(EXEC)/
 	cp -r ./frames ~/$(EXEC)/
-	echo "~/\$(EXEC)/\$(EXEC)" >> ~/.bashrc
+	echo "~/\$(EXEC)/\.$(EXEC)" >> ~/.bashrc
 
 uninstall:
 	rm -rf ~/parrot
