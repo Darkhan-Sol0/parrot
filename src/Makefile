@@ -26,7 +26,7 @@ install: $(EXEC)
 	echo "~/\.$(EXEC)/\$(EXEC)" >> ~/.bashrc
 
 uninstall:
-	rm -rf ~/parrot
+	rm -rf ~/.parrot
 
 clean: uninstall
 	rm -rf $(EXEC)
