@@ -18,19 +18,26 @@ int main() {
   noecho();
   curs_set(0);
   srand(time(NULL));
+
+  const char *home = getenv("HOME");
   
-  char* frame[10] = {
-    "frames/0.txt",
-    "frames/1.txt",
-    "frames/2.txt",
-    "frames/3.txt",
-    "frames/4.txt",
-    "frames/5.txt",
-    "frames/6.txt",
-    "frames/7.txt",
-    "frames/8.txt",
-    "frames/9.txt",
-  };
+  // char* frame[10] = {
+  //   "~/parrot/frames/0.txt",
+  //   "~/parrot/frames/1.txt",
+  //   "~/parrot/frames/2.txt",
+  //   "~/parrot/frames/3.txt",
+  //   "~/parrot/frames/4.txt",
+  //   "~/parrot/frames/5.txt",
+  //   "~/parrot/frames/6.txt",
+  //   "~/parrot/frames/7.txt",
+  //   "~/parrot/frames/8.txt",
+  //   "~/parrot/frames/9.txt",
+  // };
+
+  char frame[10][256];
+    for (int i = 0; i < 10; i++) {
+        snprintf(frame[i], sizeof(frame[i]), "%s/parrot/frames/%d.txt", home, i);
+    }
 
   FILE *fp;
 

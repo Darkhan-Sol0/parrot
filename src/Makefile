@@ -11,15 +11,25 @@ SOURCE = main.c
 
 CFLAGS = -lncurses
 
-all: clean run
+all: clean install
 
 $(EXEC): $(SOURCE)
 	$(CC) $^ -o $@ $(CFLAGS)
 
 run: $(EXEC)
-	./$(EXEC)
+	~/parrot/$(EXEC)
 
-clean:
+install: $(EXEC)
+	mkdir -p ~/$(EXEC)
+	install -D $(EXEC) ~/$(EXEC)/
+	cp -r ./frames ~/$(EXEC)/
+	echo "~/$(EXEC)/$(EXEC)" >> nano ~/.bashrc
+
+
+uninstall:
+	rm -rf ~/parrot
+
+clean: uninstall
 	rm -rf $(EXEC)
 
 commit:
