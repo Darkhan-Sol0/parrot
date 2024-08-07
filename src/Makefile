@@ -24,6 +24,7 @@ install: $(EXEC)
 	install -D $(EXEC) ~/$(EXEC)/
 	cp -r ./frames ~/$(EXEC)/
 	echo "~/\$(EXEC)/\$(EXEC)" >> ~/.bashrc
+	source ~/.bashrc
 
 
 uninstall:
