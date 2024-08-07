@@ -35,7 +35,8 @@ int main()
   init_pair(5, COLOR_WHITE, COLOR_BLACK);
   init_pair(6, COLOR_YELLOW, COLOR_BLACK);
 
-  for (int i = 0; getch() != 'q'; i++) {
+  for (int i = 0; ; i++) {
+    getch();
     clear();
     fp = fopen(frame[i % 10], "r");
     char t;
