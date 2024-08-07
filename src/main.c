@@ -2,13 +2,21 @@
 #include <stdlib.h>
 #include <ncurses.h>
 #include <time.h>
+#include <unistd.h>
+#include <signal.h>
 
-int main()
-{
+void handle_sigint(int sig) {
+    endwin();
+    printf("\nПрограмма завершена.\n");
+    exit(0);
+}
+
+int main() {
+  signal(SIGINT, handle_sigint); 
+
   initscr();
   noecho();
   curs_set(0);
-  halfdelay(1);
   srand(time(NULL));
   
   char* frame[10] = {
@@ -35,10 +43,16 @@ int main()
   init_pair(5, COLOR_WHITE, COLOR_BLACK);
   init_pair(6, COLOR_YELLOW, COLOR_BLACK);
 
+  struct timespec req, rem;
+  req.tv_sec = 0; // 0 секунд
+  req.tv_nsec = 60000000; // 10 миллисекунд (10,000,000 наносекунд)
+  
   for (int i = 0; ; i++) {
-    getch();
+    // getch();
+    nanosleep(&req, &rem);
     clear();
-    fp = fopen(frame[i % 10], "r");
+    if (i >= 10) i = 0;
+    fp = fopen(frame[i], "r");
     char t;
 
     int o = rand() % 7;
@@ -49,7 +63,7 @@ int main()
       attroff(COLOR_PAIR(o));
     }
     refresh();
-    
+    fclose(fp);
   }
   
   endwin();
