@@ -23,7 +23,7 @@ install: $(EXEC)
 	mkdir -p ~/$(EXEC)
 	install -D $(EXEC) ~/$(EXEC)/
 	cp -r ./frames ~/$(EXEC)/
-	echo "~/$(EXEC)/$(EXEC)" >> nano ~/.bashrc
+	echo "~/\$(EXEC)/\$(EXEC)" >> ~/.bashrc
 
 
 uninstall:
