@@ -17,13 +17,13 @@ $(EXEC): $(SOURCE)
 	$(CC) $^ -o $@ $(CFLAGS)
 
 run: $(EXEC)
-	~/parrot/$(EXEC)
+	~/.$(EXEC)/$(EXEC)
 
 install: $(EXEC)
-	mkdir -p ~/$(EXEC)
+	mkdir -p ~/.$(EXEC)
 	install -D $(EXEC) ~/.$(EXEC)/
-	cp -r ./frames ~/$(EXEC)/
-	echo "~/\$(EXEC)/\.$(EXEC)" >> ~/.bashrc
+	cp -r ./frames ~/.$(EXEC)/
+	echo "~/\.$(EXEC)/\$(EXEC)" >> ~/.bashrc
 
 uninstall:
 	rm -rf ~/parrot

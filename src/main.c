@@ -36,7 +36,7 @@ int main() {
 
   char frame[10][256];
     for (int i = 0; i < 10; i++) {
-        snprintf(frame[i], sizeof(frame[i]), "%s/parrot/frames/%d.txt", home, i);
+        snprintf(frame[i], sizeof(frame[i]), "%s/.parrot/frames/%d.txt", home, i);
     }
 
   FILE *fp;
